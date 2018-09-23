@@ -23,7 +23,7 @@ import { NgbdModalBasic } from './modal/modal.component';
         RouterModule,
         JWBootstrapSwitchModule
       ],
-    declarations: [
+    declarations: [ 
         ComponentsComponent,
         BasicelementsComponent,
         NavigationComponent,
