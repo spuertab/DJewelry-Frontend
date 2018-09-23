@@ -82,11 +82,24 @@
                     </div>
                       <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
                   </div>
-                    <div class="textarea-container">
-                        <textarea class="form-control" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>
+                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend" >
+                      <span class="input-group-text">
+                            <i class="now-ui-icons ui-1_email-85"></i>
+                      </span>
                     </div>
+                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
+                  </div>
+                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                    <div class="input-group-prepend" >
+                      <span class="input-group-text">
+                            <i class="now-ui-icons ui-1_email-85"></i>
+                      </span>
+                    </div>
+                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
+                  </div>
                     <div class="send-button">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
+                        <a href="/examples/landing" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
                     </div>
                 </div>
             </div>
