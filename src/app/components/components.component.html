@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="section section-team text-center">
+    <!--<div class="section section-team text-center">
         <div class="container">
             <h2 class="title">Here is our team</h2>
             <div class="team">
@@ -105,31 +105,39 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="section section-contact-us text-center">
         <div class="container">
             <h2 class="title">Want to work with us?</h2>
             <p class="description">Your project is very important to us.</p>
             <div class="row">
                 <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus===true}">
                     <div class="input-group-prepend" >
-                      <span class="input-group-text">
-                          <i class="now-ui-icons users_circle-08"></i>
-                      </span>
+                        <span class="input-group-text">
+                            <i class="now-ui-icons users_circle-08"></i>
+                        </span>
                     </div>
-                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus=true" (blur)="focus=false">
-                  </div>
-                  <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                        <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus1===true}">
                     <div class="input-group-prepend" >
-                      <span class="input-group-text">
+                        <span class="input-group-text">
                             <i class="now-ui-icons ui-1_email-85"></i>
-                      </span>
+                        </span>
                     </div>
-                      <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
-                  </div>
+                        <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                    <div class="input-group input-lg" [ngClass]="{'input-group-focus':focus2===true}">
+                        <div class="input-group-prepend" >
+                            <span class="input-group-text">
+                                <i class="now-ui-icons ui-1_email-85"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Left Font Awesome Icon" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
                     <div class="send-button">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-block btn-lg">Send Message</a>
+                        <a href="#pablo" class="btn btn-default btn-round btn-block btn-lg">Send Message</a>
                     </div>
                 </div>
             </div>
@@ -163,9 +171,7 @@
             </nav>
             <div class="copyright">
                 &copy;
-                {{data | date: 'yyyy'}}, Designed by
-                <a href="http://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                {{data | date: 'yyyy'}}, Creado por el TdeA
             </div>
         </div>
     </footer>

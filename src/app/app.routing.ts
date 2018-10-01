@@ -13,7 +13,7 @@ const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     { path: 'index',                component: ComponentsComponent },
     { path: 'nucleoicons',          component: NucleoiconsComponent },
-    { path: 'examples/landing',     component: LandingComponent },
+    { path: 'fabric',     component: LandingComponent },
 ];
 
 @NgModule({
