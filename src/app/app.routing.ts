@@ -4,16 +4,13 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ComponentsComponent } from './components/components.component';
-import { LandingComponent } from './examples/landing/landing.component';
-import { LoginComponent } from './examples/login/login.component';
-import { ProfileComponent } from './examples/profile/profile.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     { path: 'index',                component: ComponentsComponent },
     { path: 'nucleoicons',          component: NucleoiconsComponent },
-    { path: 'fabric',     component: LandingComponent },
+    { path: 'factory',     component: NucleoiconsComponent },
 ];
 
 @NgModule({
