@@ -26,7 +26,10 @@
               "src/assets/css/demo.css"
             ],
             "scripts": [
-              "node_modules/rellax/rellax.min.js"
+              "node_modules/rellax/rellax.min.js",
+              "node_modules/three/build/three.js",
+              "node_modules/three/examples/js/loaders/STLLoader.js",
+              "node_modules/three/examples/js/controls/TrackballControls.js"
             ]
           },
           "configurations": {
@@ -74,7 +77,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "node_modules/rellax/rellax.min.js"
+              "node_modules/rellax/rellax.min.js",
+              "node_modules/three/build/three.js",
+              "node_modules/three/examples/js/loaders/STLLoader.js",
+              "node_modules/three/examples/js/controls/TrackballControls.js"
             ],
             "styles": [
               "src/styles.scss",
