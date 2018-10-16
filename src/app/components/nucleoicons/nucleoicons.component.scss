@@ -1,1 +1,35 @@
- 
+.card {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.preview {
+    margin-top: 49px;
+}
+
+.bg-info {
+    background-color: #76C5C1 !important;
+}
+
+.card-palette {
+    margin-bottom: 0px
+}
+
+#canvas-three {
+    cursor: move;
+    overflow: hidden;
+}
+
+.card-palette .card {
+    cursor: pointer
+}
+
+.card-palette .card img{
+    opacity:0.5;
+    transition: 1s ease;
+    height: 135px;
+}
+
+.card-palette .card img:hover{
+    opacity:1;
+    transition: 1s ease;
+}
