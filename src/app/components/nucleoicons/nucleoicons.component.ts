@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Renderer, ElementRef, OnDestroy } from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import * as THREE from 'three-full';
 
 @Component({
@@ -7,87 +7,97 @@ import * as THREE from 'three-full';
     styleUrls: ['./nucleoicons.component.scss']
 })
 export class NucleoiconsComponent implements OnInit, OnDestroy {
-    constructor( private element : ElementRef) {}
+    @ViewChild('canvasThree') canvasThree: ElementRef;
+    @ViewChild('card') card: ElementRef;
+
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    scene = null;
+    camera = null;
+    mesh = null;
+    controls = null;
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    constructor() {}
 
     ngOnInit() {
         let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
         navbar.classList.remove('navbar-transparent');
 
-        var container = document.getElementById("canvas-three");
-        var scene, camera, renderer, controls;
-        var WIDTH  = container.clientWidth;
-        var HEIGHT = 600;
-        var SPEED = 0.01;
+        this.initThree();
+    }
 
-        function init() {
-            scene = new THREE.Scene();
+    initThree() {
+        this.width = this.width - this.card.nativeElement.offsetWidth;
+        this.width = this.width;
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color( 0x828282 );
+        this.scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+        this.renderer.setPixelRatio( window.devicePixelRatio );
+        this.renderer.setSize( this.width, this.height ); 
+        
+        this.camera = new THREE.PerspectiveCamera(2, this.width / this.height, .2, 2000);
+        this.camera.position.x = 1;
+        this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-            initMesh(); 
-            initCamera();
-            initLights();
-            initRenderer();
-        }
+        // controls
+        this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+        //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
+        this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+        this.controls.dampingFactor = 0.25;
+        this.controls.screenSpacePanning = false;
+        this.controls.minDistance = 100;
+        this.controls.maxDistance = 500;
+        this.controls.maxPolarAngle = Math.PI / 2;
 
-        function initCamera() {
-            camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 10);
-            camera.position.set(0, 3.5, 5);
-            controls = new THREE.OrbitControls( camera );
-        }
+        // lights
+        var light = new THREE.DirectionalLight( 0xffffff );
+        light.position.set( 1, 1, 1 );
+        this.scene.add( light );
+        var light = new THREE.DirectionalLight( 0x002288 );
+        light.position.set( - 1, - 1, - 1 );
+        this.scene.add( light );
+        var light = new THREE.AmbientLight( 0x222222 );
+        this.scene.add( light );
 
-        function initRenderer() {
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(WIDTH, HEIGHT);
-            renderer.setClearColor (0xEAFCE6);
-            container.appendChild(renderer.domElement)
-        }
+        this.loadObjectScene('assets/ring/step1/DiseñoBase4.dae');
 
-        function initLights() {
-            var light = new THREE.PointLight(0xffffff, 1);
-            light.position.set( -100, 200, 100 );
-            scene.add( light );
+        this.renderer.setSize(this.width, this.height);
+        this.canvasThree.nativeElement.appendChild(this.renderer.domElement);
+        this.animate();
+    }
+    
+    animate() {
+        window.requestAnimationFrame(() => this.animate());
+        this.controls.update();
+        this.render();
+    }
 
-            var lightEnviroment = new THREE.AmbientLight(0xffffff, 0.1);
-            scene.add( lightEnviroment );
-        }
+    render() {
+        this.renderer.render(this.scene, this.camera);
+    }
 
-        var mesh = null;
-        function initMesh() {
-            var loader = new THREE.JSONLoader();
-            loader.load('assets/ring/step1/anilloBase.js', function(geometry, materials) {
-                mesh = new THREE.Mesh(geometry, materials);
-                mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.20;
-                scene.add(mesh);
-            });
-        }
+    loadObjectScene(object) {
+        var o = this.scene.getObjectByName('objectring');
+        this.scene.remove( o );
 
-        function rotateMesh() {
-            if (!mesh) {
-                return;
-            }
-
-            mesh.rotation.x -= SPEED;
-            mesh.rotation.y -= SPEED;
-            mesh.rotation.z -= SPEED;
-        }
-
-        function render() {
-            requestAnimationFrame(render);
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener( 'resize', onWindowResize, false );
-
-        function onWindowResize() {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        }
-
-        init();
-        render(); 
+        var sceneLoader = this.scene;
+        var dae;
+        var loader = new THREE.ColladaLoader();
+        loader.options.convertUpAxis = true;
+        loader.load(object, function loadCollada( collada ) {
+            dae = collada.scene;
+            var my_material = new THREE.MeshPhongMaterial() //or any other material
+            //set map, shininess, etc. if needed
+            dae.material = my_material
+            dae.name = "objectring";
+            dae.position.set(0,0,0);
+            dae.updateMatrix();
+            sceneLoader.add(dae);
+        });
     }
 
     ngOnDestroy(){
         let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
     }
-}
+} 

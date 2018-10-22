@@ -10,26 +10,71 @@
     background-color: #76C5C1 !important;
 }
 
-.card-palette {
-    margin-bottom: 0px
-}
-
 #canvas-three {
     cursor: move;
     overflow: hidden;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
-.card-palette .card {
+.card {
+    width: 30%; 
+    height: 100%;
+    z-index: 1000; 
+    position: fixed;
+    right: 0;
+    margin-top: -10px;
+}
+
+.card .list-group-item {
     cursor: pointer
 }
 
-.card-palette .card img{
-    opacity:0.5;
-    transition: 1s ease;
-    height: 135px;
+.card i {
+    cursor: pointer; 
+    font-size: 20px; 
+    color: #828282
 }
 
-.card-palette .card img:hover{
-    opacity:1;
-    transition: 1s ease;
+.card .head1 {
+    background-color: #61BCB7;
+    font-size: 18px;
+    color: white 
+}
+
+.card .head2 {
+    background-color: #eee;
+}
+
+.jewelry-circle-button {
+	box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
+	border: .5em solid rgb(129, 216, 212);
+	font-size: 1em;
+	line-height: 1.1em;
+	color: #ffffff;
+	background-color: #61BCB7;
+	margin: auto;
+	border-radius: 50% !important;
+	height: 7em;
+	width: 7em;
+	position: relative;
+}
+.jewelry-circle-button:hover {
+	color:#ffffff;
+    background-color: #e84d0e;
+	text-decoration: none;
+	border-color: #ff7536;
+	
+}
+.jewelry-circle-button:visited {
+	color:#ffffff;
+    background-color: #e84d0e;
+	text-decoration: none;
+	
+}
+.jewelry-circle-link-greater-than {
+    font-size: 1em;
 }
