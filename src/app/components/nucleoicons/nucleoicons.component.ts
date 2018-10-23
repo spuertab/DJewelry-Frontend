@@ -78,14 +78,14 @@ export class NucleoiconsComponent implements OnInit, OnDestroy {
     }
 
     loadObjectScene(object) {
-        var o = this.scene.getObjectByName('objectring');
-        this.scene.remove( o );
-
         var sceneLoader = this.scene;
         var dae;
         var loader = new THREE.ColladaLoader();
         loader.options.convertUpAxis = true;
         loader.load(object, function loadCollada( collada ) {
+            var o = sceneLoader.getObjectByName('objectring');
+            sceneLoader.remove( o );
+
             dae = collada.scene;
             var my_material = new THREE.MeshPhongMaterial() //or any other material
             //set map, shininess, etc. if needed
