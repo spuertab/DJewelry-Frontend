@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NucleoiconsComponent } from './nucleoicons.component';
+import { LabComponent } from './lab.component';
 
-describe('NucleoiconsComponent', () => {
-  let component: NucleoiconsComponent;
-  let fixture: ComponentFixture<NucleoiconsComponent>;
+describe('LabComponent', () => {
+  let component: LabComponent;
+  let fixture: ComponentFixture<LabComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NucleoiconsComponent ]
+      declarations: [ LabComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NucleoiconsComponent);
+    fixture = TestBed.createComponent(LabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

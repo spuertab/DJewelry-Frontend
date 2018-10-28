@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ComponentsComponent } from './components/components.component';
 import { FactoryComponent } from './components/factory/factory.component';
-import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
+import { LabComponent } from './components/lab/lab.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'index', pathMatch: 'full' },
     { path: 'index',                component: ComponentsComponent },
-    { path: 'nucleoicons',          component: NucleoiconsComponent },
+    { path: 'lab/:lab',          component: LabComponent },
     { path: 'factory',              component: FactoryComponent },
 ];
 

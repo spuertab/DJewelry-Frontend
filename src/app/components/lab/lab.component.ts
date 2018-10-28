@@ -1,12 +1,13 @@
 import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import * as THREE from 'three-full';
 
 @Component({
-    selector: 'app-nucleoicons',
-    templateUrl: './nucleoicons.component.html',
-    styleUrls: ['./nucleoicons.component.scss']
+    selector: 'app-lab',
+    templateUrl: './lab.component.html',
+    styleUrls: ['./lab.component.scss']
 })
-export class NucleoiconsComponent implements OnInit, OnDestroy {
+export class LabComponent implements OnInit, OnDestroy {
     @ViewChild('canvasThree') canvasThree: ElementRef;
     @ViewChild('card') card: ElementRef;
 
@@ -18,13 +19,16 @@ export class NucleoiconsComponent implements OnInit, OnDestroy {
     width = window.innerWidth;
     height = window.innerHeight;
 
-    constructor() {}
+    constructor(private readonly route: ActivatedRoute,
+                private readonly router: Router,) {}
 
     ngOnInit() {
         let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
-        navbar.classList.remove('navbar-transparent');
-
-        this.initThree();
+            navbar.classList.remove('navbar-transparent');
+        this.route.paramMap.subscribe(params => {
+            console.log(params.get("lab")); 
+            this.initThree();
+        });
     }
 
     initThree() {

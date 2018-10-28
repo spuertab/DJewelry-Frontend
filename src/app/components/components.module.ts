@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { FactoryComponent } from './factory/factory.component';
 import { TypographyComponent } from './typography/typography.component';
-import { NucleoiconsComponent } from './nucleoicons/nucleoicons.component';
+import { LabComponent } from './lab/lab.component';
 import { ComponentsComponent } from './components.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { ComponentsComponent } from './components.component';
         FactoryComponent,
         ComponentsComponent,
         TypographyComponent,
-        NucleoiconsComponent
+        LabComponent
     ],
     exports:[ ComponentsComponent ]
 })
