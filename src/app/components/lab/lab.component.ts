@@ -1,11 +1,13 @@
 import {Component, ViewChild, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { LabService } from "./lab.service"
 import * as THREE from 'three-full';
 
 @Component({
     selector: 'app-lab',
     templateUrl: './lab.component.html',
-    styleUrls: ['./lab.component.scss']
+    styleUrls: ['./lab.component.scss'],
+    providers: [LabService],
 })
 export class LabComponent implements OnInit, OnDestroy {
     @ViewChild('canvasThree') canvasThree: ElementRef;
@@ -16,18 +18,23 @@ export class LabComponent implements OnInit, OnDestroy {
     camera = null;
     mesh = null;
     controls = null;
+    objects = [];
+    object_id = "";
     width = window.innerWidth;
     height = window.innerHeight;
 
     constructor(private readonly route: ActivatedRoute,
-                private readonly router: Router,) {}
+                private readonly router: Router,
+                public labService: LabService) {}
 
     ngOnInit() {
         let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
             navbar.classList.remove('navbar-transparent');
         this.route.paramMap.subscribe(params => {
-            console.log(params.get("lab")); 
-            this.initThree();
+            this.labService.getObjects(params.get("lab")).subscribe((response: any) => {
+                this.objects = response;
+                this.initThree();
+            });
         });
     }
 
@@ -64,7 +71,7 @@ export class LabComponent implements OnInit, OnDestroy {
         var light = new THREE.AmbientLight( 0x222222 );
         this.scene.add( light );
 
-        this.loadObjectScene('assets/ring/step1/DiseñoBase4.dae');
+        this.loadObjectScene(this.objects[0]);
 
         this.renderer.setSize(this.width, this.height);
         this.canvasThree.nativeElement.appendChild(this.renderer.domElement);
@@ -82,11 +89,12 @@ export class LabComponent implements OnInit, OnDestroy {
     }
 
     loadObjectScene(object) {
+        this.object_id = object.objectdaeId;
         var sceneLoader = this.scene;
         var dae;
         var loader = new THREE.ColladaLoader();
         loader.options.convertUpAxis = true;
-        loader.load(object, function loadCollada( collada ) {
+        loader.load(object.url, function loadCollada( collada ) {
             var o = sceneLoader.getObjectByName('objectring');
             sceneLoader.remove( o );
 
@@ -99,6 +107,10 @@ export class LabComponent implements OnInit, OnDestroy {
             dae.updateMatrix();
             sceneLoader.add(dae);
         });
+    }
+
+    ok() {
+        this.router.navigate(['lab', this.object_id]);
     }
 
     ngOnDestroy(){

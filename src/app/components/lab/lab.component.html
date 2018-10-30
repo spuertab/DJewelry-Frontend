@@ -7,28 +7,14 @@
             <li class="list-group-item list-group-item-action head2">
                 Selecciona un objeto
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" (click)="loadObjectScene('assets/ring/step1/DiseñoBase.dae')">
-                Anillo base 1
-                <i class="fa fa-eye badge-pill"></i>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" (click)="loadObjectScene('assets/ring/step1/DiseñoBase2.dae')">
-                Anillo base 2
-                <i class="fa fa-eye badge-pill"></i>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" (click)="loadObjectScene('https://djewelrystorage.blob.core.windows.net/anillosobjectos/DiseñoBase3.dae')">
-                Anillo base 3
-                <i class="fa fa-eye badge-pill"></i>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" (click)="loadObjectScene('assets/ring/step1/DiseñoBase4.dae')">
-                Anillo base 4
+            <li *ngFor="let object of objects" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" (click)="loadObjectScene(object)">
+                {{object.name}}
                 <i class="fa fa-eye badge-pill"></i>
             </li>
         </ul>
-        <br>
-        <br>
-        <div style="text-align: center">
-            <button class="btn btn-default jewelry-circle-button" href=""><span class="jewelry-circle-greater-than">OK</span></button>
+        <div style="text-align: center; margin-top: 240px;">
+            <button class="btn btn-default jewelry-circle-button" (click)="ok()"><span class="jewelry-circle-greater-than">OK</span></button>
         </div>
     </div>
-    <div #canvasThree id="canvas-three"></div>  
+    <div #canvasThree id="canvas-three" style="background-color: #828282"></div>  
 </div>

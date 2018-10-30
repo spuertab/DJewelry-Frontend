@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
                 if (number > 150 || window.pageYOffset > 150) {
                     navbar.classList.remove('navbar-transparent');
-                } else if (this.location.path() !== '/lab' && this.location.path() !== '/factory') {
+                } else if (this.location.path() === '/' && this.location.path() === '/index') {
                     // remove logic
                     navbar.classList.add('navbar-transparent');
                 }

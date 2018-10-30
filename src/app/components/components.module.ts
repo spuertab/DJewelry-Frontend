@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
@@ -13,6 +14,7 @@ import { ComponentsComponent } from './components.component';
 
 @NgModule({
     imports: [
+        HttpClientModule,
         CommonModule,
         FormsModule,
         NgbModule,
