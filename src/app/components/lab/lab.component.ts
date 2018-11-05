@@ -31,17 +31,23 @@ export class LabComponent implements OnInit, OnDestroy {
     ngOnInit() {
         let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
             navbar.classList.remove('navbar-transparent');
+        this.width = this.width - this.card.nativeElement.offsetWidth;
+
         this.route.paramMap.subscribe(params => {
             this.labService.getObjects(params.get("lab")).subscribe((response: any) => {
-                this.objects = response;
-                this.initThree();
+                console.log(response);
+                if (response.length > 0) {
+                    this.objects = response;
+                    this.initThree();
+                }
+                else {
+                    this.router.navigate(['lab', 1]);
+                }
             });
         });
     }
 
     initThree() {
-        this.width = this.width - this.card.nativeElement.offsetWidth;
-        this.width = this.width;
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0x828282 );
         this.scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
