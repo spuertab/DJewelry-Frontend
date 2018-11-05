@@ -1,45 +1,79 @@
-.tabs{
-  background-color:#f5f5f5;
-  padding-top:30px;
-  padding-bottom:30px;
+.ptb-50{
+  margin-top: 60px;
+  padding: 50px 50px;
 }
 
-.tabs .tab-pane{
-  margin-left:20px;
+.section_bg_gray {
+  background-color: #f3f5f7;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
-.tabs h3{
-  font-size:20px;
-  margin-top:10px;
-  margin-bottom:60px;
+.single_what_we_do {
+  background-color: #ffffff;
+  text-align: center;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.single_what_we_do:hover {
+  -webkit-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
-.tabs p{
-  font-size:14px;
+.single_what_we_do .top_line {
+  position: absolute;
+  top: 0;
+  left: 44%;
+  background-color: #64BDB8;
+  width: 12%;
+  height: 3px;
 }
 
-.tabs a{
-  font-size:15px;
-  font-weight:700;
-  color:#fff;
-  padding:30px;
+.single_what_we_do .what_we_do_figure {
+  padding: 40px 0;
+}
+.single_what_we_do .what_we_do_figure img {
+  margin: 0 auto;
+}
+.single_what_we_do .what_we_do_title {
+  font-weight: 600;
+  font-size: 22px;
+  padding-bottom: 35px;
+  margin: 0;
+  color: #2b353a;
+}
+.single_what_we_do .what_we_do_content {
+  padding-bottom: 65px;
+  color: #2b353a;
+}
+.single_what_we_do .what_we_do_icon {
+  position: absolute;
+  bottom: 18px;
+  left: 47%;
+  color: #fff;
+  background-color: #64BDB8;
+  width: 30px;
+  height: 30px; 
+  text-align: center;
+  border-radius: 50% !important; 
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.tabs li{
-  background-color:#24292E;
-  margin-top:1px;
-  text-align:center;
-  height:110px;
-  width:100%;
-  padding-top:45px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
-}
-
-.tabs li.active{
-  background-color:#61BCB7;
-}
-
-.form-control {
-    background-color: white
+.single_what_we_do .what_we_do_icon i {
+  font-size: 24px;
+  text-align: center;
+  padding: 2px 3px 2px 5px;
 }
