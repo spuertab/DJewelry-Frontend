@@ -18,6 +18,7 @@ export class LabComponent implements OnInit, OnDestroy {
     camera = null;
     mesh = null;
     controls = null;
+    loading = true;
     objects = [];
     object_id = "";
     width = window.innerWidth;
@@ -89,14 +90,14 @@ export class LabComponent implements OnInit, OnDestroy {
     }
 
     loadObjectScene(object) {
+        this.loading = true;
         this.object_id = object.objectdaeId;
-        var sceneLoader = this.scene;
         var dae;
         var loader = new THREE.ColladaLoader();
         loader.options.convertUpAxis = true;
-        loader.load(object.url, function loadCollada( collada ) {
-            var o = sceneLoader.getObjectByName('objectring');
-            sceneLoader.remove( o );
+        loader.load(object.url, (collada) => {
+            var o = this.scene.getObjectByName('objectring');
+            this.scene.remove( o );
 
             dae = collada.scene;
             var my_material = new THREE.MeshPhongMaterial() //or any other material
@@ -105,7 +106,8 @@ export class LabComponent implements OnInit, OnDestroy {
             dae.name = "objectring";
             dae.position.set(0,0,0);
             dae.updateMatrix();
-            sceneLoader.add(dae);
+            this.scene.add(dae);
+            this.loading = false;
         });
     }
 

@@ -20,3 +20,9 @@
     </div>
     <div #canvasThree id="canvas-three" style="background-color: #828282"></div>  
 </div>
+<div *ngIf="loading" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #64bdb8f5; z-index: 1000;">
+    <div style="height:100vh; display:flex; align-items:center; justify-content:center; color: white">
+        <i class="fa fa-diamond" style="font-size: 6em;"></i> 
+        <p style="position: absolute; margin-top: 70px;">Cargando...</p>
+    </div>
+</div>
