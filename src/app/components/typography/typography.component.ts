@@ -9,6 +9,9 @@ export class TypographyComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+        let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
+        navbar.classList.remove('navbar-transparent');
+    }
 
 }

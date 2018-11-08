@@ -41,7 +41,7 @@ export class LabComponent implements OnInit, OnDestroy {
                     this.initThree();
                 }
                 else {
-                    this.router.navigate(['lab', 1]);
+                    this.router.navigate(['form']);
                 }
             });
         });

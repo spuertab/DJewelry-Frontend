@@ -9,7 +9,7 @@ export class LabService {
   constructor(private http: HttpClient) { }
 
   public getObjects(objectdae_id: string) {
-      return this.http.get("http://djewelry.azurewebsites.net/api/Object/" + objectdae_id).pipe(map((res: Response) => res));
+      return this.http.get("https://djewelry.azurewebsites.net/api/Object/" + objectdae_id).pipe(map((res: Response) => res));
   }
   
 }
