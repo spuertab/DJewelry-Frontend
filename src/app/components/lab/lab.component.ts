@@ -49,7 +49,7 @@ export class LabComponent implements OnInit, OnDestroy {
 
     initThree() {
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0x828282 );
+        this.scene.background = new THREE.Color( 0xbcbcbc );
         this.scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setSize( this.width, this.height ); 

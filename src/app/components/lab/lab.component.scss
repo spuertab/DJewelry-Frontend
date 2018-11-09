@@ -27,6 +27,7 @@
     position: fixed;
     right: 0;
     margin-top: -10px;
+    background-color: #49505a
 }
 
 .card .list-group-item {
@@ -40,41 +41,40 @@
 }
 
 .card .head1 {
-    background-color: #61BCB7;
+    background-color: #6E7886;
     font-size: 18px;
     color: white 
 }
 
 .card .head2 {
-    background-color: #eee;
+    background-color: #6e7886;
+    color: white;
+    border-bottom: #484d53 solid 1px;
 }
 
-.jewelry-circle-button {
-	box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
-	border: .5em solid rgb(129, 216, 212);
-	font-size: 1em;
-	line-height: 1.1em;
-	color: #ffffff;
-	background-color: #61BCB7;
-	margin: auto;
-	border-radius: 50% !important;
-	height: 7em;
-	width: 7em;
-	position: relative;
-}
-.jewelry-circle-button:hover {
-	color:#ffffff;
-    background-color: #61BCB7;
-	text-decoration: none;
-	border-color: rgb(129, 216, 212);
-	
-}
-.jewelry-circle-button:visited {
-	color:#ffffff;
-    background-color: #61BCB7;
-	text-decoration: none;
-	
-}
-.jewelry-circle-link-greater-than {
-    font-size: 1em;
+.gallery
+{
+    margin-top: 20px;
+    max-height: 500px;
+    overflow-y: hidden;
+    .text-muted {
+        font-size: 0.9em;
+        color: white !important
+    }
+
+    .thumbnail {
+        cursor: pointer
+    }
+
+    .thumbnail {
+        position: relative;
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+    
+    .thumbnail img {
+        width: 100%;
+        height: 162px;
+        border-radius: 5px !important;
+    }
 }
