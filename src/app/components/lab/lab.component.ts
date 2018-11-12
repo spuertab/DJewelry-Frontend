@@ -13,7 +13,7 @@ export class LabComponent implements OnInit, OnDestroy {
     @ViewChild('canvasThree') canvasThree: ElementRef;
     @ViewChild('card') card: ElementRef;
 
-    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
     scene = null;
     camera = null;
     mesh = null;
@@ -22,7 +22,7 @@ export class LabComponent implements OnInit, OnDestroy {
     objects = [];
     object_id = "";
     width = window.innerWidth;
-    height = window.innerHeight;
+    height = window.innerHeight - 6;
 
     constructor(private readonly route: ActivatedRoute,
                 private readonly router: Router,
@@ -35,7 +35,6 @@ export class LabComponent implements OnInit, OnDestroy {
 
         this.route.paramMap.subscribe(params => {
             this.labService.getObjects(params.get("lab")).subscribe((response: any) => {
-                console.log(response);
                 if (response.length > 0) {
                     this.objects = response;
                     this.initThree();
@@ -49,8 +48,6 @@ export class LabComponent implements OnInit, OnDestroy {
 
     initThree() {
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color( 0xbcbcbc );
-        this.scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setSize( this.width, this.height ); 
         
@@ -115,6 +112,8 @@ export class LabComponent implements OnInit, OnDestroy {
             this.scene.add(dae);
             this.loading = false;
         });
+
+        localStorage.setItem("object_img", object.image);
     }
 
     ok() {

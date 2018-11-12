@@ -1,28 +1,69 @@
-<div class="background-full">
-    <div class="container">
-        <div class="login-form">
-            <div class="main-div">
-                <div class="panel">
-                <h2>Para finalizar...</h2>
-                <p>Necesitamos esta información de la joya</p>
-                </div>
-                <form id="Login">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar información</button>
-                </form>
+<div class="section_bg_gray">
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <i class="fa fa-circle-o" style="font-size: 6em;"></i> 
+                <h3>¡Hola!</h3>
+                <p>Los siguientes datos son necesarios para hacer de tu joya una realidad</p>
+                <a href="/factory" value="Nueva Joya"></a><br/>
             </div>
-            <p class="botto-text"> Designed by Sunil Rajput</p>
+            <div class="col-md-9 register-right">
+                <h3 class="register-heading">Para finalizar...</h3>
+                <div class="row register-form">
+                    <div class="col-md-6">
+                        <form [formGroup]="signupForm" (ngSubmit)="onSendInfo()">
+                            <div class="form-group">
+                                <input formControlName="email" type="text" class="form-control" placeholder="Email" value="" />
+                                <span class="help-block" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+                                    Por favor ingresa un email válido
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="name" type="text" class="form-control" placeholder="Nombre Completo" value="" />
+                                <span class="help-block" *ngIf = "!signupForm.get('name').valid && signupForm.get('name').touched">Campo obligatorio</span>
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="phone" type="text" class="form-control" placeholder="Número de teléfono" value="" />
+                                <span class="help-block" *ngIf = "!signupForm.get('phone').valid && signupForm.get('phone').touched">Campo obligatorio</span>
+                            </div>
+                            <div class="form-group">
+                                <select formControlName="ringmeasure" class="form-control">
+                                    <option value="" selected disabled>Medida del anillo (mm)</option>
+                                    <option value="1mm">1mm</option>
+                                    <option value="2mm">2mm</option>
+                                    <option value="3mm">3mm</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select formControlName="ringweight" class="form-control">
+                                    <option value="" selected disabled>Peso del anillo (g)</option>
+                                    <option value="2g">2g</option>
+                                    <option value="3g">3g</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btnRegister">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="{{object_url}}" style="width: 70%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="confirmJewelry" class="container-finally">
+    <div class="text-finally">
+        <div style="position: absolute; max-width: 400px; text-align: justify">
+            <div style="font-family: Brush Script MT, Brush Script Std, cursive; font-size: 4em; font-weight: bold;">DJewelry</div>
+            Hemos finalizado la personalizacion de tu joya, 
+            nos estaremos comunicando prontamente para ajustar detalles, 
+            realizar la cotizacion y posteriormente definir fechas y sitio de la entrega del producto. ¡Gracias!
+            <br>
+            <br>
+            <br>
+            <a href="/factory" class="btn btn-info" style="background-color: #63b1ac; width: 100%">Nueva joya</a>
         </div>
     </div>
 </div>

@@ -10,23 +10,35 @@
         </ul> 
         <div class="container">
             <div class="row gallery">
-                <div class='col-md-6' *ngFor="let object of objects" (click)="loadObjectScene(object)">
+                <div class='col-md-4' *ngFor="let object of objects" (click)="loadObjectScene(object)">
                     <div class="thumbnail" rel="ligthbox">
                         <img class="img-responsive" alt="" src="{{object.image}}" />
-                        <div class='text-right'>
+                        <div class='text-center'>
                             <small class='text-muted'> {{object.name}}</small>
                         </div> 
                     </div>
                 </div> 
             </div> 
-            <button type="button" (click)="ok()" class="btn btn-info" style="background-color: #64BDB8">Continuar</button>
+            <button type="button" (click)="ok()" class="btn btn-info" style="background-color: #64BDB8; width: 100%">Continuar</button>
         </div>
     </div>
-    <div #canvasThree id="canvas-three" style="background-color: #828282"></div>  
+    <div #canvasThree id="canvas-three" style="background: linear-gradient( #61bcb7b5, #61bcb7cc ), url(https://cdn.wallpapersafari.com/49/83/CIYBXp.jpg);"></div>  
 </div>
 <div *ngIf="loading" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #64bdb8f5; z-index: 1000;">
     <div style="height:100vh; display:flex; align-items:center; justify-content:center; color: white">
         <i class="fa fa-diamond" style="font-size: 6em;"></i> 
         <p style="position: absolute; margin-top: 70px;">Cargando...</p>
     </div>
+</div>
+<div style="position: absolute;
+z-index: 999;
+bottom: 0;
+left: 0;
+margin-bottom: 20px;
+margin-left: 33px;
+color: white;
+font-size: 2em;
+">
+<i class="fa fa-eye"></i>
+Vista previa
 </div>
