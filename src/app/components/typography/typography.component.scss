@@ -5,6 +5,7 @@
   top: 0;
   right: 0;
   left: 0;
+  overflow-y: scroll
 }
 .register{
   background: -webkit-linear-gradient(left, #61bcb7, #3c889e);
@@ -21,11 +22,13 @@
   color: #fff;
   margin-top: 4%;
 }
-.register-left input{
+.register-left a{
   border: none;
   border-radius: 1.5rem !important;
   padding: 2%;
-  width: 60%;
+  padding-left: 9%;
+  padding-right: 9%;
+  width: 100%;
   background: #f8f9fa;
   font-weight: bold;
   color: #383d41;

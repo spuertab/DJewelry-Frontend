@@ -113,7 +113,7 @@ export class LabComponent implements OnInit, OnDestroy {
             this.loading = false;
         });
 
-        localStorage.setItem("object_img", object.image);
+        localStorage.setItem("object_img", object.finalImage);
     }
 
     ok() {
